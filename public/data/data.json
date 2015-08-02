@@ -1,0 +1,52 @@
+[
+  {
+    "websiteName": "20minutes",
+    "websiteURL": "http://www.20minutes.fr",
+    "logoutURL": "http://www.20minutes.fr/membre/logout"
+  },
+  {
+    "websiteName": "Amazon",
+    "websiteURL": "http://www.amazon.com",
+    "logoutURL": "http://www.amazon.com/gp/flex/sign-out.html/?action=sign-out"
+  },
+  {
+    "websiteName": "CDiscount",
+    "websiteURL": "https://cdiscount.com",
+    "logoutURL": "https://order.cdiscount.com/logoutSecured.mvc"
+  },
+  {
+    "websiteName": "Dailymotion",
+    "websiteURL": "http://www.dailymotion.com",
+    "logoutURL": "http://www.dailymotion.com/logout"
+  },
+  {
+    "websiteName": "Google",
+    "websiteURL": "http://www.google.com",
+    "logoutURL": "https://www.google.com/accounts/Logout"
+  },
+  {
+    "websiteName": "LeBonCoin",
+    "websiteURL": "https://leboncoin.fr",
+    "logoutURL": "https://compteperso.leboncoin.fr/store/logout/"
+  },
+  {
+    "websiteName": "LeFigaro",
+    "websiteURL": "http://lefigaro.fr",
+    "logoutURL": "http://plus.lefigaro.fr/deconnexion"
+  },
+  {
+    "websiteName": "NetFlix",
+    "websiteURL": "https://www.netflix.com",
+    "logoutURL": "https://www.netflix.com/logout?locale=en-US"
+  },
+  {
+    "websiteName": "Paypal",
+    "websiteURL": "https://paypal.com",
+    "logoutURL": "https://www.paypal.com/myaccount/logout"
+  },
+  {
+    "websiteName": "Yahoo",
+    "websiteURL": "http://www.yahoo.com",
+    "logoutURL": "http://login.yahoo.com/config/login?logout=1"
+  }
+]

